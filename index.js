@@ -15,14 +15,15 @@ app.use(cors())
 
 mongoose.connect(process.env.MONGO_URI).then(()=> console.log("Database is connected"))
 .catch(()=>{console.log("Database is not  connected")})
-app.get("/home",(req,res)=>{
-    res.send("<h1>Welcome to our website</h1>")                
-})
 
 app.use("/vendor",vendorRoute)
 app.use("/firm",firmRoute)
 app.use("/product",productRoute)
 app.use("/uploads",express.static("uploads"))
+
+app.get("/",(req,res)=>{
+    res.send("<h1>Welcome to our foodiey website to start with your own bussiness</h1>")                
+})
 
 app.listen(PORT,()=>{
       console.log("Server is running at port 5000")              
